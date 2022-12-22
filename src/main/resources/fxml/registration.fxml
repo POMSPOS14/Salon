@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.salon.ui.Registration">
+   <children>
+      <Label layoutX="81.0" layoutY="58.0" text="Имя" />
+      <Label layoutX="81.0" layoutY="106.0" text="Фамилия" />
+      <Label layoutX="81.0" layoutY="155.0" text="Отчество" />
+      <Label layoutX="81.0" layoutY="263.0" text="Пароль" />
+      <Label layoutX="81.0" layoutY="207.0" text="Логин" />
+      <TextField fx:id="firstNameInfoTextField" layoutX="81.0" layoutY="75.0" />
+      <TextField fx:id="secondNameInfoTextField" layoutX="81.0" layoutY="123.0" />
+      <TextField fx:id="middleNameInfoTextField" layoutX="81.0" layoutY="175.0" />
+      <TextField fx:id="loginInfoTextField" layoutX="81.0" layoutY="232.0" />
+      <Button fx:id="registration" layoutX="95.0" layoutY="350.0" mnemonicParsing="false" onAction="#registrationAction" text="Зарегестрироватся" />
+      <Label fx:id="infoLabel" layoutX="10.0" layoutY="326.0" prefHeight="17.0" prefWidth="291.0" />
+      <PasswordField fx:id="passwordInfoTextField" layoutX="81.0" layoutY="289.0" />
+   </children>
+</AnchorPane>

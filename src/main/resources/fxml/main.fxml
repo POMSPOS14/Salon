@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.salon.ui.MainController">
+    <children>
+        <TableView fx:id="table" editable="true" layoutY="-4.0" prefHeight="354.0" prefWidth="451.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="-4.0">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+      <Label fx:id="userLabel" layoutX="489.0" layoutY="28.0" prefHeight="17.0" prefWidth="88.0" text="unknown" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="28.0" />
+      <Label layoutX="489.0" layoutY="14.0" prefHeight="12.0" prefWidth="88.0" text="Пользователь:" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="14.0" />
+    </children>
+</AnchorPane>
