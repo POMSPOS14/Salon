@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="684.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.salon.ui.AdminMain">
+   <children>
+      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="630.0" prefWidth="899.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Пользователи">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="745.0">
+                     <children>
+                        <TableView fx:id="userTableView" layoutX="14.0" layoutY="14.0" onMouseClicked="#getTableData" prefHeight="573.0" prefWidth="684.0" />
+                        <Label layoutX="723.0" layoutY="149.0" text="Имя" />
+                        <Label layoutX="722.0" layoutY="214.0" text="Фамилия" />
+                        <Label layoutX="726.0" layoutY="273.0" text="Отчество" />
+                        <Label layoutX="726.0" layoutY="396.0" text="Пароль" />
+                        <Label layoutX="730.0" layoutY="339.0" text="Логин" />
+                        <TextField fx:id="firstNameInfoTextField" layoutX="723.0" layoutY="179.0" />
+                        <TextField fx:id="secondNameInfoTextField" layoutX="723.0" layoutY="237.0" />
+                        <TextField fx:id="middleNameInfoTextField" layoutX="723.0" layoutY="301.0" />
+                        <TextField fx:id="loginInfoTextField" layoutX="723.0" layoutY="365.0" />
+                        <TextField fx:id="passwordInfoTextField" layoutX="723.0" layoutY="424.0" />
+                        <Label layoutX="721.0" layoutY="92.0" text="Id" />
+                        <Label fx:id="idInfoTextField" layoutX="721.0" layoutY="121.0" prefHeight="17.0" prefWidth="114.0" />
+                        <Button fx:id="changeDataButton" layoutX="724.0" layoutY="516.0" mnemonicParsing="false" onAction="#changeData" prefHeight="56.0" prefWidth="148.0" text="Изменить данные" />
+                        <TextField fx:id="roleInfoTextField" layoutX="723.0" layoutY="478.0" />
+                        <Label layoutX="721.0" layoutY="461.0" text="Роль" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Записи">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="recordTableView" layoutX="14.0" layoutY="52.0" prefHeight="537.0" prefWidth="843.0" />
+                        <SplitMenuButton fx:id="splitMenuEmployee" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Работник" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="943.0" layoutY="23.0" text="Пользователь" />
+      <Label fx:id="userLabel" layoutX="943.0" layoutY="53.0" prefHeight="17.0" prefWidth="97.0" />
+      <Button fx:id="exitButton" layoutX="943.0" layoutY="106.0" mnemonicParsing="false" onAction="#exit" prefHeight="45.0" prefWidth="97.0" text="Выход" />
+   </children>
+</AnchorPane>

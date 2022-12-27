@@ -10,10 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import ru.salon.ControllersConfiguration;
 import ru.salon.entity.User;
+import ru.salon.util.Role;
 import ru.salon.service.UserService;
 
 import java.util.Optional;
@@ -22,9 +25,16 @@ import java.util.Optional;
 @SuppressWarnings("SpringJavaAutowiringInspection")
 public class Login {
 
-    @Qualifier("mainView")
+    @Qualifier("userMainView")
     @Autowired
-    private ControllersConfiguration.ViewHolder mainView;
+    private ControllersConfiguration.ViewHolder userMainView;
+    @Qualifier("adminMainView")
+    @Autowired
+    private ControllersConfiguration.ViewHolder adminMainView;
+
+    @Qualifier("employeeMainView")
+    @Autowired
+    private ControllersConfiguration.ViewHolder employeeMainView;
 
     @Qualifier("registrationView")
     @Autowired
@@ -35,6 +45,22 @@ public class Login {
 
     @Autowired
     private MainController mainController;
+
+    @Autowired
+    private UserMain userMain;
+
+    @Autowired
+    private EmployeeMain employeeMain;
+
+    @Autowired
+    private AdminMain adminMain;
+
+    @Autowired
+    private Registration registration;
+
+    @Setter
+    @Getter
+    private Stage itStage;
     @FXML
     private Button inButton;
     @FXML
@@ -56,31 +82,76 @@ public class Login {
     public void initialize() {
     }
 
+    public void show() {
+        itStage.show();
+    }
+
     @FXML
     public void login(ActionEvent event) {
         String loginTextFieldText = loginTextField.getText();
         String passwordTextFieldText = passwordTextField.getText();
         Optional<User> user = userService.findByLoginAndPassword(loginTextFieldText, passwordTextFieldText);
+        this.itStage = ((Stage) ((Node) event.getSource()).getScene().getWindow());
         if (user.isPresent()) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(mainView.getView(), stage.getWidth(), stage.getHeight()));
-            stage.setResizable(true);
-            stage.centerOnScreen();
-            stage.show();
-            mainController.addUser(user.get());
-            mainController.init();
-        }else {
+            if (user.get().getRole().equals(Role.USER)) {
+                if (userMain.getItStage() == null) {
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(userMainView.getView(), stage.getWidth(), stage.getHeight()));
+                    stage.setResizable(true);
+                    stage.centerOnScreen();
+                    stage.show();
+                    userMain.addUser(user.get());
+                    userMain.setItStage(stage);
+                } else {
+                    userMain.show();
+                }
+            }
+            if (user.get().getRole().equals(Role.EMPLOYEE)) {
+                if (employeeMain.getItStage() == null) {
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(employeeMainView.getView(), stage.getWidth(), stage.getHeight()));
+                    stage.setResizable(true);
+                    stage.centerOnScreen();
+                    stage.show();
+                    employeeMain.addUser(user.get());
+                    employeeMain.updateMyRecordTable();
+                    employeeMain.setItStage(stage);
+                } else {
+                    employeeMain.show();
+                }
+            }
+            if (user.get().getRole().equals(Role.ADMIN)) {
+                if (adminMain.getItStage() == null) {
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(adminMainView.getView(), stage.getWidth(), stage.getHeight()));
+                    stage.setResizable(true);
+                    stage.centerOnScreen();
+                    stage.show();
+                    adminMain.addUser(user.get());
+                    adminMain.updateUserTable();
+                    adminMain.setItStage(stage);
+                } else {
+                    adminMain.show();
+                }
+            }
+            itStage.hide();
+        } else {
             infoLabel.setText("Пользователь не найден");
         }
     }
 
     @FXML
     public void registrationAction(ActionEvent actionEvent) {
-        Stage stage = new Stage();
-        stage.setTitle("Регистрация");
-        stage.setScene(new Scene(registrationView.getView()));
-        stage.setResizable(true);
-        stage.centerOnScreen();
-        stage.show();
+        if (registration.getItStage() == null) {
+            Stage stage = new Stage();
+            stage.setTitle("Регистрация");
+            stage.setScene(new Scene(registrationView.getView()));
+            stage.setResizable(true);
+            stage.centerOnScreen();
+            stage.show();
+            registration.setItStage(stage);
+        } else {
+            registration.show();
+        }
     }
 }

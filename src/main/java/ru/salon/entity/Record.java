@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.salon.util.Role;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
 
 @Entity
 @Table
@@ -16,32 +13,30 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class User implements Serializable {
+public class Record {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String employeeFullName;
 
     @Column(nullable = false)
-    private String secondName;
+    private String userFullName;
 
     @Column(nullable = false)
-    private String middleName;
-
-    @Column(nullable = false, unique = true)
-    private String login;
+    private String employeeLogin;
 
     @Column(nullable = false)
-    private String password;
+    private String userLogin;
 
     @Column(nullable = false)
-    private Role role;
+    private String recordDate;
 
-    public String getFullName(){
-        return secondName + " " + firstName + " " + middleName;
-    }
+    @Column(nullable = false)
+    private String recordTime;
 
+    @Column(nullable = false)
+    private String serviceType;
 }

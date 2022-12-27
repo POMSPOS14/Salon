@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="756.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.salon.ui.UserMain">
+   <children>
+      <TabPane fx:id="TabPaneMain" layoutX="14.0" layoutY="14.0" prefHeight="723.0" prefWidth="873.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabRecord" text="Запись">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="789.0">
+                     <children>
+                        <SplitMenuButton fx:id="splitMenuEmployee" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Выберете работника" />
+                        <SplitMenuButton fx:id="splitMenuDate" layoutX="252.0" layoutY="14.0" mnemonicParsing="false" text="Выберете дату" />
+                        <TableView fx:id="recordTable" layoutX="14.0" layoutY="51.0" onMouseClicked="#getTableData" prefHeight="610.0" prefWidth="361.0" />
+                        <Button fx:id="recordButton" layoutX="503.0" layoutY="308.0" mnemonicParsing="false" onAction="#recordOn" prefHeight="78.0" prefWidth="138.0" text="Записаться" />
+                        <Label fx:id="infoLabel" layoutX="388.0" layoutY="429.0" prefHeight="25.0" prefWidth="368.0" textFill="#e40303" />
+                        <SplitMenuButton fx:id="serviceSplitMenuButton" layoutX="452.0" layoutY="14.0" mnemonicParsing="false" text="Услуга" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabMyRecord" onSelectionChanged="#selectionMyRecord" text="Мои приёмы">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="872.0">
+                     <children>
+                        <TableView fx:id="myRecordTableView" layoutX="14.0" layoutY="14.0" prefHeight="577.0" prefWidth="837.0" />
+                        <Button fx:id="deleteRecordButton" layoutX="14.0" layoutY="599.0" mnemonicParsing="false" onAction="#deleteRecord" prefHeight="73.0" prefWidth="215.0" text="Удалить запись" />
+                        <Label fx:id="deleteInfoLabel" layoutX="254.0" layoutY="647.0" prefHeight="25.0" prefWidth="304.0" textFill="#e40404" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="871.0" layoutY="14.0" prefHeight="25.0" prefWidth="109.0" text="Пользователь:" AnchorPane.leftAnchor="893.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="userLabel" layoutX="893.0" layoutY="39.0" prefHeight="35.0" prefWidth="86.0" AnchorPane.leftAnchor="893.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="39.0" />
+      <Button fx:id="exitButton" layoutX="893.0" layoutY="74.0" mnemonicParsing="false" onAction="#exit" prefHeight="49.0" prefWidth="109.0" text="Выход" />
+   </children>
+</AnchorPane>

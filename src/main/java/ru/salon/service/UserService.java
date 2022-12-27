@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.salon.entity.User;
 import ru.salon.repository.UserRepository;
-import ru.salon.role.Role;
+import ru.salon.util.Role;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -31,6 +31,31 @@ public class UserService {
      */
     @PostConstruct
     public void generateTestData() {
+
+        save(User.builder()
+                .firstName("Пользователь")
+                .secondName("Пользов")
+                .middleName("Пользователич")
+                .login("1")
+                .password("1")
+                .role(Role.USER).build());
+
+        save(User.builder()
+                .firstName("Работник")
+                .secondName("Работов")
+                .middleName("Раблтович")
+                .login("2")
+                .password("2")
+                .role(Role.EMPLOYEE).build());
+
+        save(User.builder()
+                .firstName("Адми")
+                .secondName("Админов")
+                .middleName("Админович")
+                .login("3")
+                .password("3")
+                .role(Role.ADMIN).build());
+
         save(User.builder()
                 .firstName("Иван")
                 .secondName("Иванов")
@@ -89,6 +114,9 @@ public class UserService {
 
     public List<User> findAll() {
         return repository.findAll();
+    }
+    public List<User> findAllByRole(Role role) {
+        return repository.findAllByRole(role);
     }
 
     public Optional<User> findByLoginAndPassword(String login, String password){

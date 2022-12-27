@@ -1,4 +1,4 @@
-package ru.salon.role;
+package ru.salon.util;
 
 import lombok.Getter;
 

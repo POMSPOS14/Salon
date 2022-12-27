@@ -1,7 +1,5 @@
 package ru.salon.ui;
 
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -10,9 +8,11 @@ import javafx.stage.Stage;
 import lombok.Data;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.salon.entity.User;
-import ru.salon.role.Role;
+import ru.salon.util.Role;
 import ru.salon.service.UserService;
 
 import java.util.Optional;
@@ -23,6 +23,10 @@ public class Registration {
 
     @Autowired
     private UserService userService;
+
+    @Setter
+    @Getter
+    private Stage itStage;
     @FXML
     private TextField firstNameInfoTextField;
     @FXML
@@ -41,6 +45,10 @@ public class Registration {
     @FXML
     public void initialize() {
 
+    }
+
+    public void show() {
+        itStage.show();
     }
     @FXML
     public void registrationAction(ActionEvent actionEvent) {

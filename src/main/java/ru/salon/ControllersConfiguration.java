@@ -4,9 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.salon.ui.Login;
-import ru.salon.ui.MainController;
-import ru.salon.ui.Registration;
+import ru.salon.ui.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,10 +27,32 @@ public class ControllersConfiguration {
     public ViewHolder getRegistrationView() throws IOException {
         return loadView("fxml/registration.fxml");
     }
+    @Bean(name = "userMainView")
+    public ViewHolder getUserMainView() throws IOException {
+        return loadView("fxml/userMain.fxml");
+    }
+
+    @Bean(name = "employeeMainView")
+    public ViewHolder getEmployeeMainView() throws IOException {
+        return loadView("fxml/employeeMain.fxml");
+    }
+    @Bean(name = "adminMainView")
+    public ViewHolder getAdminMainView() throws IOException {
+        return loadView("fxml/adminMain.fxml");
+    }
 
     @Bean
     public MainController getMainController() throws IOException {
         return (MainController) getMainView().getController();
+    }
+
+    @Bean
+    public EmployeeMain getEmployeeMainController() throws IOException {
+        return (EmployeeMain) getEmployeeMainView().getController();
+    }
+    @Bean
+    public AdminMain getAdminMainController() throws IOException {
+        return (AdminMain) getAdminMainView().getController();
     }
 
     @Bean
@@ -43,6 +63,11 @@ public class ControllersConfiguration {
     @Bean
     public Registration getRegistrationController() throws IOException {
         return (Registration) getRegistrationView().getController();
+    }
+
+    @Bean
+    public UserMain getUserMainController() throws IOException {
+        return (UserMain) getUserMainView().getController();
     }
 
     /**

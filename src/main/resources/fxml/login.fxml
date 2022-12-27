@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.salon.ui.Login">
    <children>
-      <Button fx:id="inButton" layoutX="333.0" layoutY="533.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="335.0" text="Войти" />
+      <Button fx:id="inButton" layoutX="335.0" layoutY="544.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="335.0" text="Войти" />
       <ImageView fx:id="mainImageView" fitHeight="309.0" fitWidth="345.0" layoutX="346.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/image/max.png" />
@@ -16,7 +16,7 @@
       <TextField fx:id="passwordTextField" layoutX="380.0" layoutY="481.0" prefHeight="25.0" prefWidth="244.0" />
       <Label fx:id="loginLabel" alignment="CENTER" layoutX="422.0" layoutY="370.0" prefHeight="18.0" prefWidth="157.0" text="Логин" />
       <Label fx:id="passwordLabel" layoutX="481.0" layoutY="451.0" text="Пароль" />
-      <Label fx:id="infoLabel" layoutX="384.0" layoutY="534.0" prefHeight="17.0" prefWidth="244.0" textFill="#ed0909" />
+      <Label fx:id="infoLabel" layoutX="378.0" layoutY="514.0" prefHeight="17.0" prefWidth="244.0" textFill="#ed0909" />
       <Button fx:id="registrationButton" layoutX="337.0" layoutY="595.0" mnemonicParsing="false" onAction="#registrationAction" prefHeight="36.0" prefWidth="329.0" text="Регистрация" />
    </children>
 </AnchorPane>
